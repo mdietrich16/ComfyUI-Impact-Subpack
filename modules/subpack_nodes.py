@@ -29,7 +29,12 @@ class UltralyticsDetectorProvider:
     CATEGORY = "ImpactPack"
 
     def doit(self, model_name):
+        logging.info(folder_paths.base_path)
+        logging.info(folder_paths.models_dir)
+        logging.info(folder_paths.folder_names_and_paths)
+        logging.info(model_name)
         model_path = folder_paths.get_full_path("ultralytics", model_name)
+        logging.info(model_path)
 
         if model_path is None:
             print(f"[Impact Subpack] model file '{model_name}' is not found in one of the following directories:")
@@ -43,6 +48,7 @@ class UltralyticsDetectorProvider:
 
             formatted_cands = "\n\t".join(cands)
             print(f'\t{formatted_cands}\n')
+            logging.info(f'\t{formatted_cands}\n')
 
             raise ValueError(f"[Impact Subpack] model file '{model_name}' is not found.")
 
